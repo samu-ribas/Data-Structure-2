@@ -65,6 +65,8 @@ int altura(NoArv *raiz){
     }
 }
 
+// void altura(NoArv *raiz) // calcular altura versão recursiva
+
 void liberar_arvore(NoArv *raiz) {
     if (!raiz) return;
     liberar_arvore(raiz->esquerda);
