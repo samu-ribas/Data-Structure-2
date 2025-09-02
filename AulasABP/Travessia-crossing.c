@@ -19,8 +19,8 @@ void preorder(TnoABP *root)
         preorder(root->right); 
     }
 }
-
-void inordem(TnoABP *root)
+// print in order
+void inorder(TnoABP *root)
 {
     if(root){
         preorder(root->left);
