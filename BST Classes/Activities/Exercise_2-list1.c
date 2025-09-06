@@ -12,17 +12,16 @@ reminiscent of binary search for sorted vectors: i) check if the key is in the m
 if not, ii) recursively search for the given key in the left sub-vector; and if not, iii) search in the 
 right sub-vector. Use typical assumptions of a search algorithm to design your function.
 */
-
-int search(int vet[], int key, int fim, int inicio);
-int verificaVetorVazio(int vetor[], int key, int dim);
+int* start_search(int vetor[], int tamanho, int chave);
+int* search_rec (int vetor[], int chave, int inicio, int fim);
 
 int main()
 {
-    int v[] = {10, 5, 7, 3, 11, 8, 2}; // array test
+    int v[] = {10, 5, 7, 3, 1, 2, 4}; // array test
     int dim = sizeof(v) / 4; //pega o tamanho do vetor
 
-    int key = 8; // chave teste
-    int *p = start_search(v, key, dim); 
+    int key = 7; // chave teste
+    int *p = start_search(v, dim, key); 
     if(p)
         printf("Found key %d ,(index = %p)\n", key, p);
     else 
