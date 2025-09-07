@@ -45,7 +45,6 @@ int inserir(Node **p, int key){
     return height;
 }
 
-
 int main()
 {
     Node *root = NULL;
@@ -63,7 +62,7 @@ int main()
         int depth = inserir(&root, k);
 
         if(depth < 0){
-            // falha de alocação: encerra gravando o que temos
+            //falha de alocação. encerra gravando o que temos
             fprintf(stderr, "malloc falhou na insercao %d\n", i);
             break;
         }
@@ -76,8 +75,3 @@ int main()
     fclose(fp);
     return 0;
 }
-
-
-
-
-
