@@ -74,5 +74,5 @@ int main(){
         }
     }while(opcao != 0);
     liberar_arvore(raiz);
-    return 0;
-}
+    return 0;                                                                                                                                                                                                                                                                                                                                                                                                               
+} 

@@ -27,7 +27,7 @@ typedef struct no{
     pointer pointer to the subtree and a search key (k). p must
     be such that k = (*p) -> key. Or, return NULL if the condition cannot be satisfied.
 */
-/// fazer a busca do subistituo e a remoção 
+/// fazer a busca do substituo e a remoção 
  ///search for the substitute and remove it
 NoABP **searchppRec(NoABP **raiz, int k){
     // suposição: raiz nunca é nulo, advem de um &
