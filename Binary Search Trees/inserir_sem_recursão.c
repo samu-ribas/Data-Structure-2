@@ -45,6 +45,22 @@ void liberar_arvore(NoArv *raiz) {
     free(raiz);
 }
 
+int maior(NoArv *raiz){
+    if(!raiz) return 0;
+    while(raiz->direita){
+        raiz = raiz->direita;
+    }
+    return raiz->valor;
+}
+
+int menor(NoArv *raiz){
+    if(!raiz) return 0;
+    while(raiz->esquerda){
+        raiz = raiz->esquerda;
+    }
+    return raiz->valor;
+}
+
 int main(){
 
     NoArv *raiz = NULL;
@@ -73,6 +89,7 @@ int main(){
                 printf("\n\tOpcao invalida!!!\n");
         }
     }while(opcao != 0);
+    printf("\ndiff: %d\n", maior(raiz) - menor(raiz));
     liberar_arvore(raiz);
     return 0;                                                                                                                                                                                                                                                                                                                                                                                                               
 } 
