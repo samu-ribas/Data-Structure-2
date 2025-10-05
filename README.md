@@ -3,3 +3,4 @@ Data structure course focusing on binary trees and hash tables.
 
 # Estrutura de dados
 Curso de estrutura de dados com foco em ABP, AVL e tabela hash.
+...
