@@ -66,7 +66,7 @@ void imprimir_lista(Tno *p)
 {
     if(!p){
         printf("Lista vazia.\n");
-        return NULL;
+        return;
     }
     Tno *aux = p;
     while(aux)
