@@ -1,9 +1,59 @@
 #include<stdio.h>
-
+#include<stdlib.h>
 typedef struct no{
     int key, fb;
     struct no *esq, *dir;
 }Nodetree;
+
+Nodetree *alocar(int k);
+int insereAVL(Nodetree **p, int k);
+void rotacao_esq(Nodetree **p);
+void rotacao_dir(Nodetree **p);
+void rotacao_dupla(Nodetree **p);
+void pre_ordem(Nodetree *p);
+
+int main() {
+    Nodetree *raiz = NULL;
+    int opcao, valor;
+
+    do {
+        printf("\n--- Teste de Insercao AVL ---\n");
+        printf("1. Inserir um valor\n");
+        printf("2. Mostrar a arvore (Em Ordem)\n");
+        printf("3. Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Digite o valor a ser inserido: ");
+                scanf("%d", &valor);
+                insereAVL(&raiz, valor);
+                break;
+
+            case 2:
+                if (raiz) {
+                    printf("\nArvore AVL (Em preordem - Chave (FB)): \n");
+                    pre_ordem(raiz);
+                    printf("\n");
+                } else {
+                    printf("A arvore esta vazia.\n");
+                }
+                break;
+
+            case 3:
+                printf("Encerrando o programa de testes.\n");
+                // Em um código de produção, você liberaria a memória da árvore aqui
+                break;
+
+            default:
+                printf("Opcao invalida. Tente novamente.\n");
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
 
 Nodetree *alocar(int k){
     Nodetree *novo = NULL;
@@ -49,7 +99,7 @@ int insereAVL(Nodetree **p, int k){
                         (*p)->fb = (*p)->dir->fb = 0;
                     }
                     else
-                        rotacao_dupla(*p); // passa o endereço do nó pai
+                        rotacao_dupla(p); // passa o endereço do nó pai
                     cresceu = 0;
                 break;
             
@@ -73,27 +123,13 @@ int insereAVL(Nodetree **p, int k){
                 break;
 
                 case 1: // caso da quebra
-                    if((*p)->dir->fb == -1)
+                    if((*p)->dir->fb == 1)
                     {
                         rotacao_esq(p);
                         (*p)->fb = (*p)->esq->fb = 0;
                     }
                     else
-                    {
-                        rotacao_esq( &( (*p)->dir ) );
-                        rotacao_dir(p);
-                        if((*p)->fb == -1)
-                        {
-                            (*p)->esq->fb = 0;
-                            (*p)->dir->fb = 1;
-                        }
-                        else
-                        {
-                            (*p)->dir->fb = 0;
-                            (*p)->esq->fb = -(*p)->fb; 
-                        }
-                        (*p)->fb = 0;
-                    }
+                        rotacao_dupla(p);
                     cresceu = 0;
                 break;
             
@@ -137,6 +173,7 @@ void rotacao_dupla(Nodetree **p){
         rotacao_dir( &( (*p)->dir ) );
         rotacao_esq(p);
     }
+        // Atualização dos fatores de balanceamento
     if((*p)->fb == -1)
     {
         (*p)->esq->fb = 0;
@@ -148,4 +185,12 @@ void rotacao_dupla(Nodetree **p){
         (*p)->esq->fb = -(*p)->fb; 
     }
     (*p)->fb = 0;
+}
+
+void pre_ordem(Nodetree *p) {
+    if (p) {
+        printf("%d (FB: %d) | ", p->key, p->fb);
+        pre_ordem(p->esq);
+        pre_ordem(p->dir);
+    }
 }
