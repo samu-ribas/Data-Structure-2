@@ -58,12 +58,14 @@ void rotate_right(Node **root, Node *x){
 }
 
 /* === rotações duplas (procedimentos solicitados) ===
-   Cada função assume que x é o nó que será splayado
-   e que a configuração dos ponteiros é válida (x, p=x->parent, g=p->parent).
+*  Cada função assume que x é o nó que será splayado
+*   e que a configuração dos ponteiros é válida (x, p=x->parent, g=p->parent).
 */
 
-/* zig-zig left  (LL): x é filho esquerdo de p e p é filho esquerdo de g
-   ordem: rotate_right(g); rotate_right(p); */
+/* 
+* zig-zig left  (LL): x é filho esquerdo de p e p é filho esquerdo de g
+* ordem: rotate_right(g); rotate_right(p); 
+*/
 void zig_zig_left(Node **root, Node *x){
     Node *p = x->parent;
     Node *g = p ? p->parent : NULL;
@@ -82,8 +84,10 @@ void zig_zig_right(Node **root, Node *x){
     rotate_left(root, p);
 }
 
-/* zig-zag left-right (LR): x é filho direito de p e p é filho esquerdo de g
-   ordem: rotate_left(p); rotate_right(g); */
+/* 
+*   zig-zag left-right (LR): x é filho direito de p e p é filho esquerdo de g
+*    ordem: rotate_left(p); rotate_right(g); 
+*/
 void zig_zag_left_right(Node **root, Node *x){
     Node *p = x->parent;
     Node *g = p ? p->parent : NULL;
@@ -92,8 +96,10 @@ void zig_zag_left_right(Node **root, Node *x){
     rotate_right(root, g);
 }
 
-/* zig-zag right-left (RL): x é filho esquerdo de p e p é filho direito de g
-   ordem: rotate_right(p); rotate_left(g); */
+/* 
+*   zig-zag right-left (RL): x é filho esquerdo de p e p é filho direito de g
+*   ordem: rotate_right(p); rotate_left(g);
+*/
 void zig_zag_right_left(Node **root, Node *x){
     Node *p = x->parent;
     Node *g = p ? p->parent : NULL;
