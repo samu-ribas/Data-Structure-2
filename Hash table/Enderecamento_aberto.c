@@ -58,7 +58,7 @@ int main()
     for(int i=0 ; i<5 ; i++){
         printf("Digite o valor: ");
         scanf("%d", &chave);
-        inserir(chave, vet);
+        inserir_sond_linear(chave, vet);
     }
     imprimir_vetor(vet);
     return 0;
