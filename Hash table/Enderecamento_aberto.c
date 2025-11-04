@@ -15,17 +15,16 @@ void inicializa_vetor(int vet[]){
     }
 }
 
-int funchash(int chave){
-    return chave % m;
-}
-
-void inserir_sond_linear(int chave, int vetor[]){
-    int k=funchash(chave);
-    while(vetor[k] != -1){
+void inserir_sond_linear(int chave, int vetor[])
+{
+    int k = chave % m;
+    int i = 0;
+    while(vetor[k] != -1 && i<m){
         if(k == m-1)
-            k = 0;
+            k =0;
         else
             k++;
+        i++;
     }
     vetor[k] = chave;
 }
@@ -55,7 +54,7 @@ int main()
     int vet[m];
     int chave;
     inicializa_vetor(vet);
-    for(int i=0 ; i<5 ; i++){
+    for(int i=0 ; i<1 ; i++){
         printf("Digite o valor: ");
         scanf("%d", &chave);
         inserir_sond_linear(chave, vet);

@@ -1,10 +1,6 @@
 #include<stdio.h> 
 #define M 7
 
-int funcHash(int chave){
-    return chave % M;
-}
-
 void inicializaVetor(int vet[]){
     for(int i = 0 ; i<M ; i++){
         vet[i] = 0;
@@ -13,7 +9,7 @@ void inicializaVetor(int vet[]){
 
 int inserir(int chave, int vet[])
 {
-    int k = funcHash(chave);
+    int k = chave % M;
     if(vet[k]!=0)
         return 0;
     vet[k] = chave;
